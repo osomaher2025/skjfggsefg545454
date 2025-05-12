@@ -30,7 +30,7 @@ const JobPostForm: React.FC<JobPostFormProps> = ({ job, onClose }) => {
     department: job?.department || '',
     location: job?.location || '',
     type: job?.type || 'Full-time',
-    status: job?.status || 'active',
+    status: job?.status || 'active' as 'active' | 'draft' | 'closed',
     description: job?.description || '',
     requirements: job?.requirements || '',
     postedDate: job?.postedDate || new Date().toISOString().split('T')[0],

@@ -1,4 +1,3 @@
-
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface JobPost {
@@ -10,6 +9,8 @@ export interface JobPost {
   postedDate: string;
   status: 'active' | 'draft' | 'closed';
   applicants: number;
+  description?: string;
+  requirements?: string;
 }
 
 interface JobsState {
