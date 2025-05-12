@@ -1,3 +1,4 @@
+
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface JobPost {
@@ -157,9 +158,9 @@ const initialState: JobsState = {
   error: null,
   filters: {
     search: '',
-    department: '',
-    status: '',
-    type: '',
+    department: 'all_departments',
+    status: 'all_statuses',
+    type: 'all_types',
   },
   pagination: {
     currentPage: 1,

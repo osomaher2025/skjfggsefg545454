@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '@/store/hooks';
 import { 
@@ -51,9 +50,9 @@ const JobPostsPage: React.FC = () => {
       job.department.toLowerCase().includes(filters.search.toLowerCase()) ||
       job.location.toLowerCase().includes(filters.search.toLowerCase());
       
-    const matchesDepartment = !filters.department || job.department === filters.department;
-    const matchesStatus = !filters.status || job.status === filters.status;
-    const matchesType = !filters.type || job.type === filters.type;
+    const matchesDepartment = filters.department === 'all_departments' || job.department === filters.department;
+    const matchesStatus = filters.status === 'all_statuses' || job.status === filters.status;
+    const matchesType = filters.type === 'all_types' || job.type === filters.type;
     
     return matchesSearch && matchesDepartment && matchesStatus && matchesType;
   });
@@ -169,7 +168,7 @@ const JobPostsPage: React.FC = () => {
                   <SelectValue placeholder="Department" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Departments</SelectItem>
+                  <SelectItem value="all_departments">All Departments</SelectItem>
                   {departments.map(dept => (
                     <SelectItem key={dept} value={dept}>{dept}</SelectItem>
                   ))}
@@ -184,7 +183,7 @@ const JobPostsPage: React.FC = () => {
                   <SelectValue placeholder="Status" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Statuses</SelectItem>
+                  <SelectItem value="all_statuses">All Statuses</SelectItem>
                   {statuses.map(status => (
                     <SelectItem key={status} value={status}>
                       {status.charAt(0).toUpperCase() + status.slice(1)}
@@ -201,7 +200,7 @@ const JobPostsPage: React.FC = () => {
                   <SelectValue placeholder="Job Type" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Types</SelectItem>
+                  <SelectItem value="all_types">All Types</SelectItem>
                   {types.map(type => (
                     <SelectItem key={type} value={type}>{type}</SelectItem>
                   ))}
